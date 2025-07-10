@@ -1,4 +1,4 @@
-# 🍽️ Nova Restaurant Project
+# Nova Restaurant Project
 
 This PostgreSQL project analyzes global fine dining patterns through the lens of **NOVA**, a fictional luxury restaurant brand. The goal was to explore international restaurant data and uncover insights into customer preferences, pricing strategies, and high-end cuisine distribution.
 

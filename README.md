@@ -1,46 +1,67 @@
-# Nova Restaurant Project
+# 🛒 Instacart Orders Project — PostgreSQL Data Analysis
 
-This PostgreSQL project analyzes global fine dining patterns through the lens of **NOVA**, a fictional luxury restaurant brand. The goal was to explore international restaurant data and uncover insights into customer preferences, pricing strategies, and high-end cuisine distribution.
-
-## 📊 Project Overview
-
-- Analyzed **20,000+ restaurant listings** across **21 countries**
-- Focused on **pricing tiers**, **customer ratings**, and **delivery availability**
-- Explored which **cuisines dominate** in elite markets and where fine dining thrives
-
-## 🧠 Key Insights
-
-- Italian, French, and Japanese cuisines consistently lead in high-end restaurant markets
-- Higher price tiers correlate with better customer ratings and greater delivery availability
-- Major cities in the US, UK, and UAE host the largest concentration of premium restaurants
-
-## 🛠️ SQL Techniques Used
-
-- `JOIN`s and relational data modeling
-- `CASE` statements for tiered categorization
-- `STRING_TO_ARRAY` + `UNNEST` for multi-value field processing
-- `FILTER`, `GROUP BY`, and aggregation for custom metrics
-
-## 🧼 Data Preparation
-
-- Cleaned inconsistent text and separated multi-value fields (e.g., cuisines, locations)
-- Removed null values and grouped sparse categories into "Other"
-- Renamed columns for clarity and analysis
-
-## 📁 Dataset Summary
-
-- **Attributes**: Restaurant name, cuisines, pricing, aggregate ratings, delivery, country, city
-- Inspired by a Zomato dataset; rebranded to **NOVA** for creative storytelling
-
-## 💼 Business Applications
-
-- Market research for restaurant expansion
-- Strategic planning for delivery partnerships
-- Customer segmentation by cuisine & budget
+This project analyzes grocery shopping behavior using Instacart’s transaction data. PostgreSQL was used to uncover patterns in product reordering, basket composition, and customer retention. The project highlights SQL techniques for behavioral segmentation, product association, and time-based purchase analysis to support marketing strategy and inventory optimization.
 
 ---
 
-## 🚀 Related Projects
+## 📊 Project Overview
+
+**Goal**: Explore customer shopping habits to identify high-frequency items, popular reorder combinations, and timing of grocery purchases.  
+**Dataset**: Instacart Online Grocery Shopping Dataset (from Kaggle)  
+**Tools Used**: PostgreSQL, SQL (JOINs, window functions, subqueries, CASE, ARRAY_AGG, COUNT, FILTER, etc.)
+
+---
+
+## 🔍 Key Questions Answered
+
+- Which products are reordered most frequently?
+- What product combinations often appear in the same cart?
+- How often do customers return to place a new order?
+- What are the most active days and hours for online grocery shopping?
+- Which users demonstrate the most consistent ordering patterns?
+
+---
+
+## 🛠 Techniques & Concepts
+
+- **JOINs** across multiple tables (products, orders, departments, aisles)
+- **Window functions** to rank top users and time gaps between orders
+- **ARRAY_AGG + FILTER** to detect product pairings in shared baskets
+- **CASE statements** for segmenting reorder behavior
+- **CTEs & subqueries** for layered analysis and intermediate steps
+
+---
+
+## 📈 Insights & Outcomes
+
+- Over 50% of products were reordered regularly, with bananas and organic eggs ranking highest
+- Specific item combinations like chips and salsa, or milk and cereal, frequently co-occurred in carts
+- Top users ordered weekly, while average customers returned every ~15 days
+- Sundays and early evenings saw the highest order volume, guiding campaign timing and fulfillment planning
+
+---
+
+## 💼 Business Applications
+
+- Optimize product recommendations and cross-sell strategies
+- Forecast demand and stock inventory more effectively
+- Identify loyal customers and target them with retention offers
+- Design time-based promotions based on user behavior
+
+---
+
+## 🔗 Related Projects
+
+- [📺 Netflix Titles Project](https://github.com/yourusername/netflix-project)
+- [🍽️ Nova Restaurant Project](https://github.com/yourusername/nova-project)
+
+---
+
+## 👤 About Me
+
+**Your Name**  
+[Portfolio Website](https://yourwebsite.com) • [LinkedIn](https://linkedin.com/in/yourusername) • [Email](mailto:youremail@example.com)
+
 
 - [📦 Instacart Orders Project](https://github.com/yourusername/instacart-project)
 - [📺 Netflix Titles Project](https://github.com/yourusername/netflix-project)

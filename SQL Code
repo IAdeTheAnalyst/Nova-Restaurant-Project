@@ -1,0 +1,232 @@
+-- Which countries have the highest number of listed restaurants?
+/*
+select 
+	b.country,
+	count(*) restaurants
+from project.nova a
+	left join 
+		project.country_code b
+	on 
+		a.country_code = b.country_code
+group by b.country
+order by restaurants desc
+limit 10
+*/
+-- What is the average rating of restaurants per country?
+/*
+select 
+	countries,
+	case
+		when "Avg Rating" > 0.75  then 'Excellent'
+		when "Avg Rating" between .50 and .75 then 'Very Good'
+		when "Avg Rating" between .25 and .50 then 'Good'
+		when "Avg Rating" < .25 then 'Poor'
+	else 'Not Rated'
+	end as "Rating"
+from( 
+		select 
+			b.country as countries,
+			avg(
+				case  rating_text
+					when 'Excellent' then 1 
+					when 'Very Good' then .75
+					when 'Good' then .5
+					when 'Poor' then .25
+				else  null
+			end) as "Avg Rating" 
+		from project.nova a
+	left join 
+		project.country_code b
+	on a.country_code = b.country_code
+group by b.country)
+*/
+-- Which countries have the highest average price range?
+/*
+select 
+	b.country,
+	round(avg(a.price_range),2) as avg_price
+from project.nova a
+	left join
+	 	project.country_code b
+	on a.country_code = b.country_code
+group by b.country
+order by avg_price desc
+limit 10 
+*/
+-- Which countries have the most restaurants offering online delivery?
+/*
+select 
+	b.country,
+	count(*) as num 
+from project.nova a
+	left join project.country_code b
+		on a.country_code = b.country_code 
+where  a.has_online_delivery = 'Yes'
+group by b.country
+order by num desc 
+limit 10
+*/
+
+-- How does table booking availability vary across countries?
+/*
+select 
+	country,
+	has_table_booking as booking,
+	count(*) as num_restaurant
+from project.nova a 
+	left join 
+		project.country_code b 
+	on a.country_code = b.country_code
+group by country, booking
+order by country
+*/
+-- What are the top 10 cities with the most restaurants?
+/*)
+select 
+	city,
+	count(*) restaurants
+from project.nova
+group by city 
+order by restaurants desc
+limit 10
+*/
+-- Which localities have the highest-rated restaurants on average?
+/*
+select 
+	localities,
+		case
+			when avg_rating > .75 then 'Excellent'
+			when avg_rating between .50 and .75 then 'Very Good'
+			when avg_rating between .25 and .50 then 'Good'
+			when avg_rating < .25 then 'Poor'
+		else 'Not Rated'
+end as "Average Rating"
+from(
+		select 
+			trim(unnest(string_to_array(locality_verbose, ','))) as localities,
+	avg(case rating_text
+		when 'Excellent' then 1
+		when 'Very Good' then 0.75
+		when 'Good' then .50
+		when 'Poor' then .25
+	else null
+end) as avg_rating
+from project.nova
+group by localities
+)
+order by "Average Rating" desc
+limit 10
+
+*/
+
+-- Which cities have the most restaurants with a rating above 4.5?
+/*
+select 	
+	city,
+	count(*) as restaurants
+from project.nova
+where aggregate_rating > 4.5
+group by city
+order by restaurants desc
+limit 10
+*/
+-- How many unique cuisines are offered in each city?
+/*
+select 
+	city,
+	count(distinct(cuisine)) as "# of cuisines"
+from(
+		select 
+			city,
+			trim(unnest(string_to_array(cuisines, ','))) as cuisine 
+		from project.nova
+)
+group by city
+order by "# of cuisines" desc
+*/
+-- Which city offers the widest variety of cuisines?
+/*
+select 
+	city, 
+	count(distinct(cuisine)) as "num of cuisines"
+from(
+		select 
+			city,
+			trim(unnest(string_to_array(cuisines, ','))) as cuisine 
+		from project.nova
+)
+group by city
+order by "num of cuisines" desc 
+limit 1 
+*/
+-- What are the most popular cuisines globally based on restaurant count?
+/*
+select 
+	trim(unnest(string_to_array(cuisines, ','))) as "cuisines offered",
+	count(*) as "restaurant count"
+from project.nova
+where cuisines is not null
+group by "cuisines offered"
+order by "restaurant count" desc
+limit 10
+*/ 
+-- Which cuisines are most common among highly rated (4.5+) restaurants?
+/*
+select 
+	trim(unnest(string_to_array(cuisines, ','))) as cuisine,
+	count(*) as counts
+from project.nova
+where aggregate_rating >= 4.5
+group by cuisine
+order by counts desc
+limit 10
+*/
+
+-- Which cities have the highest concentration of premium (Price Range 4) restaurants?
+/*
+select 
+	city,
+	count(*) "num of restaurant"
+from project.nova
+where price_range = 4
+group by city
+order by "num of restaurant" desc 
+limit 5
+*/
+-- How does price range relate to rating? Do more expensive restaurants rate higher?
+/*
+select 
+		case 
+			when price_range = 1 then 'Not Expensive'
+			when price_range = 2 then 'Less Expensive'
+			when price_range = 3 then 'Expensive'
+			when price_range = 4 then 'More Expensice'
+		else 'Unkown'
+end as "Price Range",
+		case 
+			when "Avg Rating"  >= .75 then 'Excellent'
+			when "Avg Rating" between .50 and .75 then 'Very Good'
+			when "Avg Rating" between .25 and .50 then 'Good'
+			when "Avg Rating" <= .25 then 'Poor'
+		else 'Not Rated'
+end as "Average Rating"
+from(
+		select 
+			price_range,
+			avg(case rating_text
+					when 'Excellent' then 1 
+					when 'Very Good' then .75
+					when 'Good' then .5
+					when 'Poor' then .25
+				else null
+		end) as "Avg Rating"
+		from project.nova
+		group by price_range
+)
+
+
+
+
+
+
+

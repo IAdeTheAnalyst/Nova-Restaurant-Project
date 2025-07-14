@@ -1,70 +1,18 @@
-# 🛒 Instacart Orders Project — PostgreSQL Data Analysis
+# 🍽️ Nova Restaurant Insights — PostgreSQL Data Analysis
 
-This project analyzes grocery shopping behavior using Instacart’s transaction data. PostgreSQL was used to uncover patterns in product reordering, basket composition, and customer retention. The project highlights SQL techniques for behavioral segmentation, product association, and time-based purchase analysis to support marketing strategy and inventory optimization.
+This project analyzes global restaurant data from Nova (formerly Zomato) to uncover insights about dining trends, city-level cuisine diversity, pricing strategies, and rating patterns. The goal is to identify key business opportunities for food tech platforms, restaurant owners, and hospitality marketers.
 
----
-
-## 📊 Project Overview
-
-**Goal**: Explore customer shopping habits to identify high-frequency items, popular reorder combinations, and timing of grocery purchases.  
-**Dataset**: Instacart Online Grocery Shopping Dataset (from Kaggle)  
-**Tools Used**: PostgreSQL, SQL (JOINs, window functions, subqueries, CASE, ARRAY_AGG, COUNT, FILTER, etc.)
-
----
-
-## 🔍 Key Questions Answered
-
-- Which products are reordered most frequently?
-- What product combinations often appear in the same cart?
-- How often do customers return to place a new order?
-- What are the most active days and hours for online grocery shopping?
-- Which users demonstrate the most consistent ordering patterns?
-
----
-
-## 🛠 Techniques & Concepts
-
-- **JOINs** across multiple tables (products, orders, departments, aisles)
-- **Window functions** to rank top users and time gaps between orders
-- **ARRAY_AGG + FILTER** to detect product pairings in shared baskets
-- **CASE statements** for segmenting reorder behavior
-- **CTEs & subqueries** for layered analysis and intermediate steps
-
----
-
-## 📈 Insights & Outcomes
-
-- Over 50% of products were reordered regularly, with bananas and organic eggs ranking highest
-- Specific item combinations like chips and salsa, or milk and cereal, frequently co-occurred in carts
-- Top users ordered weekly, while average customers returned every ~15 days
-- Sundays and early evenings saw the highest order volume, guiding campaign timing and fulfillment planning
-
----
-
-## 💼 Business Applications
-
-- Optimize product recommendations and cross-sell strategies
-- Forecast demand and stock inventory more effectively
-- Identify loyal customers and target them with retention offers
-- Design time-based promotions based on user behavior
-
----
-
-## 🔗 Related Projects
-
-- [📺 Netflix Titles Project](https://github.com/yourusername/netflix-project)
-- [🍽️ Nova Restaurant Project](https://github.com/yourusername/nova-project)
-
----
-
-## 👤 About Me
-
-**Your Name**  
-[Portfolio Website](https://yourwebsite.com) • [LinkedIn](https://linkedin.com/in/yourusername) • [Email](mailto:youremail@example.com)
-
-
-- [📦 Instacart Orders Project](https://github.com/yourusername/instacart-project)
-- [📺 Netflix Titles Project](https://github.com/yourusername/netflix-project)
-
----
-
+## 🧠 Key Business Questions
+1. Which countries have the most listed restaurants?
+2. What’s the average restaurant rating per country?
+3. Which countries have the highest average price ranges?
+4. Where is online delivery most commonly offered?
+5. How does table booking availability vary across countries?
+6. Which cities have the most restaurants?
+7. What localities have the highest-rated restaurants?
+8. Which cities have the most highly rated restaurants (4.5+)?
+9. How many unique cuisines are offered in each city?
+10. Which city offers the widest variety of cuisines?
+11. What are the most popular global cuisines?
+12. Which cuisines are most common among top-rated restaurants?
+13. Which cities have the highest number of premium (Price
